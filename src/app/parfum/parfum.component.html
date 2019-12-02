@@ -1,0 +1,20 @@
+<h1>{{detail | monpipe}}</h1>
+<ng-container *ngFor="let p of parfum ; let indice=index">
+    <div *ngIf="p.id==identifiant" class="card" style="width: 500px;">
+        <img [src]="p.photo" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{p.nommarque | uppercase}}</h5>
+          <p class="card-text">{{p.nom}} {{p.type}} {{p.taille}} ml</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">catégorie: {{p.categorie}}</li>
+          <li class="list-group-item">prix: {{p.prix | currency}}</li>
+          <li *ngIf="p.promo" class="list-group-item">prix avant la promotion: {{p.prixAvantPromo | currency}}</li>
+          <li class="list-group-item">la date du fabriquation: {{p.datefabrication | date:'longDate'}}</li>
+        </ul>
+        <div class="card-body">
+          <button type="button" class="btn btn-success" [routerLink]="[p.id]">modifier</button>
+          <button type="button" class="btn btn-danger" (click)="onSupprime(indice)">supprimer</button>
+        </div>
+    </div>
+</ng-container>

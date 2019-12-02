@@ -1,0 +1,67 @@
+<h3>Ajout d'une Parfum</h3>
+
+<div class="container">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+            <label for="id">Identifiant du parfum</label>
+            <input type="text" id="id" name="id" [(ngModel)]="id"  class="form-control" required #identif="ngModel" >
+        </div>
+        <div *ngIf="identif.invalid && identif.dirty" class="alert alert-danger">
+            L'identifiant est obligatoire
+        </div>
+        <div class="form-group">
+            <label for="marque">marque du parfum </label>
+            <input type="text" id="marque" name="mar"[(ngModel)]="nommarque" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="nom">nom du parfum</label>
+            <input type="string" id="nom" name="nm" [(ngModel)]="nom"  class="form-control" required>
+        </div>   
+        <div class="form-group">
+            <label for="categorie">categorie du parfum </label>
+            <select id="categorie" name="cat"[(ngModel)]="categorie" class="form-control">
+                <option value="homme">homme</option>
+                <option value="femme">femme</option>
+                <option value="enfant">enfant</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="type">type du parfum</label>
+            <select id="type" name="ty" [(ngModel)]="type" class="form-control" >
+                <option value="eau de toilette">eau de toilette</option>
+                <option value="eau de parfum">eau de parfum</option>
+                <option value="parfum">parfum</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="taille">taille du parfum </label>
+            <input type="number" id="taille" name="ty" [(ngModel)]="taille" class="form-control" required >
+        </div>
+        <div class="form-group">
+            <label for="prix">prix du parfum</label>
+            <input type="number" id="prix" name="pr" [(ngModel)]="prix"  class="form-control" required #pr="ngModel" >
+        </div>
+        <div class="form-group">
+            <input class="form-check-input" type="checkbox" id="promotion" name="promotion" [(ngModel)]='promotion'>
+            <label for="promotion">la parfum est en promotion</label>
+        </div>
+        <div *ngIf="promotion" class="form-group">
+            <label for="prixavantpromo">Prix avant la promotion</label>
+            <input type="number" id="prixavantpromo" name="prixavantpromo" class="form-control" [(ngModel)]='prixavantpromo' #prpromo="ngModel">       
+        </div>
+        <div class="form-group">
+            <label for="datefabrication">date fabrication  du parfum</label>
+            <input type="string" id="datefabrication" name="dt" [(ngModel)]="datefabrication"  class="form-control" required #dt="ngModel" >
+        </div>
+        <div class="form-group">
+            <label for="image">image  du parfum</label>
+            <input type="string" id="image" name="im" [(ngModel)]="image"  class="form-control" required #im="ngModel" >
+        </div>     
+        <button type="submit" class="btn btn-success" [disabled]="f.invalid">ajouter</button>
+        <input type="reset" class="btn btn-danger" (click)="f.reset();" value="Vider"/>
+        <div [hidden] ="!submitted">
+            {{message}}
+        </div>
+    </form>
+</div> 
+
