@@ -10,6 +10,15 @@ export class ParfumsService {
   new Parfum ("2","Dior","Miss Dior","femme","eau de parfum",100,450,false,0,"10/02/2018","../assets/missdior.jpg"),
   new Parfum ("3","Tartine et chocolat","Tartine et chocolat","enfant","eau de parfum",100,150,true,200,"10/02/2018","../assets/tartineetchocolat.jpg")
 ];
+log=['Salma','akram'];
+public check(x:string,y:string):boolean{
+  if((this.log[0]==x)&&(this.log[1]==y)  ){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
 public getProduitByID(id:string):Parfum
   {
     for(let p of this.parfum)
